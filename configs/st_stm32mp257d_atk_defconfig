@@ -5,23 +5,24 @@ BR2_GLOBAL_PATCH_DIR="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/common/pa
 BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV=y
 BR2_ROOTFS_OVERLAY="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/stm32mp2/overlay"
 BR2_ROOTFS_POST_BUILD_SCRIPT="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/common/post-build.sh"
-# BR2_ROOTFS_POST_IMAGE_SCRIPT="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/common/generate-sdcard.sh $(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/common/generate-flashlayout.sh"
-# BR2_ROOTFS_POST_SCRIPT_ARGS="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/stm32mp2/genimage.cfg"
-# BR2_LINUX_KERNEL is not set
+BR2_ROOTFS_POST_IMAGE_SCRIPT="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/common/generate-sdcard.sh $(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/common/generate-flashlayout.sh"
+BR2_ROOTFS_POST_SCRIPT_ARGS="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/stm32mp2/genimage.cfg"
+BR2_LINUX_KERNEL=y
 BR2_LINUX_KERNEL_CUSTOM_TARBALL=y
 BR2_LINUX_KERNEL_CUSTOM_TARBALL_LOCATION="$(call github,STMicroelectronics,linux)v6.6-stm32mp-r2.tar.gz"
 BR2_LINUX_KERNEL_USE_ARCH_DEFAULT_CONFIG=y
 BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="$(LINUX_DIR)/arch/arm64/configs/fragment-01-defconfig-cleanup.config $(LINUX_DIR)/arch/arm64/configs/fragment-02-defconfig-addons.config $(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/common/linux-disable-etnaviv.config"
 BR2_LINUX_KERNEL_IMAGEGZ=y
 BR2_LINUX_KERNEL_DTS_SUPPORT=y
-BR2_LINUX_KERNEL_INTREE_DTS_NAME="st/stm32mp257f-dk"
+BR2_LINUX_KERNEL_INTREE_DTS_NAME="st/stm32mp257d-atk"
+BR2_LINUX_KERNEL_CUSTOM_DTS_DIR="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/stm32mp2/linux-dts"
 BR2_LINUX_KERNEL_INSTALL_TARGET=y
 BR2_LINUX_KERNEL_NEEDS_HOST_OPENSSL=y
 BR2_PACKAGE_OPTEE_CLIENT=y
-# BR2_TARGET_ROOTFS_EXT2 is not set
+BR2_TARGET_ROOTFS_EXT2=y
 BR2_TARGET_ROOTFS_EXT2_4=y
 BR2_TARGET_ROOTFS_EXT2_SIZE="100M"
-# BR2_TARGET_ROOTFS_TAR is not set
+BR2_TARGET_ROOTFS_TAR=y
 BR2_TARGET_ARM_TRUSTED_FIRMWARE=y
 BR2_TARGET_ARM_TRUSTED_FIRMWARE_CUSTOM_TARBALL=y
 BR2_TARGET_ARM_TRUSTED_FIRMWARE_CUSTOM_TARBALL_LOCATION="$(call github,STMicroelectronics,arm-trusted-firmware)v2.10-stm32mp-r2.tar.gz"
@@ -57,4 +58,4 @@ BR2_TARGET_UBOOT_FORMAT_CUSTOM_NAME="u-boot-nodtb.bin u-boot.dtb"
 BR2_TARGET_UBOOT_CUSTOM_DTS_PATH="$(BR2_EXTERNAL_ST_PATH)/board/stmicroelectronics/stm32mp2/uboot-dts/*"
 BR2_TARGET_UBOOT_CUSTOM_MAKEOPTS="dtb-y=stm32mp257d-atk.dtb DEVICE_TREE=stm32mp257d-atk"
 BR2_PACKAGE_HOST_BMAP_TOOLS=y
-# BR2_PACKAGE_HOST_GENIMAGE is not set
+BR2_PACKAGE_HOST_GENIMAGE=y
