@@ -233,7 +233,9 @@
 	max-speed = <1000>;
 	phy-handle = <&phy1_eth2>;
 	st,eth-ptp-from-rcc;
-
+	st,ext-phyclk;
+    st,eth-clk-sel;
+	
 	mdio1 {
 		#address-cells = <1>;
 		#size-cells = <0>;
