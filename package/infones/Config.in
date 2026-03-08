@@ -1,0 +1,5 @@
+config BR2_PACKAGE_INFONES
+	bool "infones"
+	depends on BR2_PACKAGE_SDL2
+	help
+	  infones
