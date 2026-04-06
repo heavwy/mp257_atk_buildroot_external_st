@@ -1,0 +1,15 @@
+config BR2_PACKAGE_LIBRETRO_MGBA
+    bool "libretro-mgba"
+    depends on BR2_INSTALL_LIBSTDCPP
+    depends on BR2_USE_WCHAR              # 必须添加：libzip 的前提条件
+    select BR2_PACKAGE_LIBZIP             # 匹配 .mk 里的依赖 
+    select BR2_PACKAGE_LIBPNG             # 匹配 .mk 里的依赖 
+    select BR2_PACKAGE_ZLIB               # 匹配 .mk 里的依赖 
+    select BR2_PACKAGE_RETROARCH          # 必须补充：解决 .mk 里的依赖冲突 
+    help
+      A libretro GBA emulator core for ARM.
+
+      http://www.libretro.com
+
+comment "libretro-mgba needs a toolchain w/ C++, wchar"
+    depends on !BR2_INSTALL_LIBSTDCPP || !BR2_USE_WCHAR

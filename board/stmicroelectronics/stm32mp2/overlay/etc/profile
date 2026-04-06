@@ -1,0 +1,25 @@
+export PATH="/bin:/sbin:/usr/bin:/usr/sbin"
+
+if [ "$PS1" ]; then
+    # 判断是否为 root 用户 (id -u 为 0)
+    if [ "`id -u`" -eq 0 ]; then
+        # root 用户使用你给出的酷炫绿色提示符
+        export PS1='\[\e[32;1m\]\u@\h:\[\e[34;1m\]\w\[\e[0m\]# '
+    else
+        # 非 root 用户可以使用略微不同的颜色区分（比如黄色 33m）
+        export PS1='\[\e[33;1m\]\u@\h:\[\e[34;1m\]\w\[\e[0m\]$ '
+    fi
+fi
+
+export EDITOR='/bin/vi'
+
+# 加上这个，让文件列表也带颜色，调试驱动看设备节点时更直观
+alias ls='ls --color=auto'
+
+# Source configuration files from /etc/profile.d
+for i in /etc/profile.d/*.sh ; do
+    if [ -r "$i" ]; then
+        . "$i"
+    fi
+done
+unset i
